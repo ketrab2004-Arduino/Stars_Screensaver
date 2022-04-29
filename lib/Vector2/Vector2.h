@@ -13,20 +13,25 @@ struct Vector2
     Vector2(int16_t xy);
 
     #pragma region Operators
-    void operator++();
-    void operator+=(Vector2 &other);
-    void operator--();
-    void operator-=(Vector2 &other);
-    void operator*=(Vector2 &other);
-    void operator/=(Vector2 &other);
-
     bool operator==(Vector2 &other);
     bool operator!=(Vector2 &other);
 
+    void operator++();
+    void operator--();
+
+
     Vector2 operator+(Vector2 &other);
+    void operator+=(Vector2 &other);
+
     Vector2 operator-(Vector2 &other);
+    void operator-=(Vector2 &other);
+
     Vector2 operator*(Vector2 &other);
+    void operator*=(Vector2 &other);
+
     Vector2 operator/(Vector2 &other);
+    void operator/=(Vector2 &other);
+
 
     Vector2 operator+(int16_t other);
     Vector2 operator-(int16_t other);
