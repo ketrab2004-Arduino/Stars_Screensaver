@@ -4,10 +4,10 @@
 class Drawable // abstract
 {
 public:
-    virtual void draw() = 0; // = 0 means that this function has to be implemented in the derived class
+    virtual void draw() = 0; // = 0 means that this method has to be implemented in the derived class
     virtual void undraw() = 0;
 
-    virtual void doStep(); // no = 0 because this function is optional
+    virtual void doStep(); // no = 0 because this method is optional
 };
 
 #endif
