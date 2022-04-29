@@ -6,6 +6,10 @@ Vector2::Vector2(int16_t x, int16_t y) { this->x = x, this->y = y; }
 Vector2::Vector2(int16_t xy) { x = xy, y = xy; }
 #pragma endregion
 
+int16_t Vector2::magnitude() { return sqrt(sqrMagnitude()); }
+int16_t Vector2::sqrMagnitude() { return x*x + y*y; }
+Vector2 Vector2::normalized() { return Vector2(x, y) / magnitude(); }
+
 #pragma region Operators
 Vector2::operator String() const { return "(", String(x) + ", " + String(y) + ")"; }
 

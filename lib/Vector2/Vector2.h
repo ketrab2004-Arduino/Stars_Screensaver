@@ -13,6 +13,12 @@ struct Vector2
     Vector2(int16_t x, int16_t y);
     Vector2(int16_t xy);
 
+
+    int16_t magnitude();
+    int16_t sqrMagnitude();
+    Vector2 normalized();
+
+
     #pragma region Operators
     bool operator==(Vector2 &other);
     bool operator!=(Vector2 &other);
