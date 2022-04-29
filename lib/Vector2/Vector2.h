@@ -1,6 +1,7 @@
 #ifndef __VECTOR2_H__
 #define __VECTOR2_H__
 
+#include <Arduino.h>
 #include <stdint.h>
 
 struct Vector2
@@ -18,6 +19,8 @@ struct Vector2
 
     void operator++();
     void operator--();
+
+    operator String() const;
 
 
     Vector2 operator+(Vector2 &other);

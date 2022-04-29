@@ -7,6 +7,8 @@ Vector2::Vector2(int16_t xy) { x = xy, y = xy; }
 #pragma endregion
 
 #pragma region Operators
+Vector2::operator String() const { return "(", String(x) + ", " + String(y) + ")"; }
+
 // Comparison
 bool Vector2::operator==(Vector2 &other) { return x == other.x && y == other.y; }
 bool Vector2::operator!=(Vector2 &other) { return x != other.x || y != other.y; }
