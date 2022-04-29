@@ -73,4 +73,22 @@ Vector2 Vector2::operator/(Vector2 &other)
     return Vector2(x / other.x, y / other.y);
 }
 #pragma endregion
+#pragma region arithmetic (int16_t)
+Vector2 Vector2::operator+(int16_t other)
+{
+    return Vector2(x + other, y + other);
+}
+Vector2 Vector2::operator-(int16_t other)
+{
+    return Vector2(x - other, y - other);
+}
+Vector2 Vector2::operator*(int16_t other)
+{
+    return Vector2(x * other, y * other);
+}
+Vector2 Vector2::operator/(int16_t other)
+{
+    return Vector2(x / other, y / other);
+}
+#pragma endregion
 #pragma endregion
