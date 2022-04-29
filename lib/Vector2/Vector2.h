@@ -12,6 +12,11 @@ struct Vector2
     Vector2(int16_t x, int16_t y);
     Vector2(int16_t xy);
 
+    void operator+=(Vector2 &other);
+    void operator-=(Vector2 &other);
+    void operator*=(Vector2 &other);
+    void operator/=(Vector2 &other);
+
     Vector2 operator+(Vector2 &other);
     Vector2 operator-(Vector2 &other);
     Vector2 operator*(Vector2 &other);
