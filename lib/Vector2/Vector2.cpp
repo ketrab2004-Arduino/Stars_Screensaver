@@ -76,17 +76,33 @@ Vector2 Vector2::operator+(int16_t other)
 {
     return Vector2(x + other, y + other);
 }
+void Vector2::operator+=(int16_t other)
+{
+    x += other, y += other;
+}
 Vector2 Vector2::operator-(int16_t other)
 {
     return Vector2(x - other, y - other);
+}
+void Vector2::operator-=(int16_t other)
+{
+    x -= other, y -= other;
 }
 Vector2 Vector2::operator*(int16_t other)
 {
     return Vector2(x * other, y * other);
 }
+void Vector2::operator*=(int16_t other)
+{
+    x *= other, y *= other;
+}
 Vector2 Vector2::operator/(int16_t other)
 {
     return Vector2(x / other, y / other);
+}
+void Vector2::operator/=(int16_t other)
+{
+    x /= other, y /= other;
 }
 #pragma endregion
 
