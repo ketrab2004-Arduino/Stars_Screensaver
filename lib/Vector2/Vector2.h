@@ -35,10 +35,13 @@ struct Vector2
 
     Vector2 operator+(int16_t other);
     void operator+=(int16_t other);
+
     Vector2 operator-(int16_t other);
     void operator-=(int16_t other);
+
     Vector2 operator*(int16_t other);
     void operator*=(int16_t other);
+
     Vector2 operator/(int16_t other);
     void operator/=(int16_t other);
     #pragma endregion
