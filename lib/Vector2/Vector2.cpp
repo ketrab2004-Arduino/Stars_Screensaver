@@ -17,6 +17,7 @@ Vector2::Vector2(int16_t xy)
 #pragma endregion
 
 #pragma region Operators
+#pragma region assignment
 void Vector2::operator++()
 {
     x++, y++;
@@ -41,8 +42,20 @@ void Vector2::operator/=(Vector2 &other)
 {
     x /= other.x, y /= other.y;
 }
+#pragma endregion
 
-// Vector2
+#pragma region comparison
+bool Vector2::operator==(Vector2 &other)
+{
+    return x == other.x && y == other.y;
+}
+bool Vector2::operator!=(Vector2 &other)
+{
+    return x != other.x || y != other.y;
+}
+#pragma endregion
+
+#pragma region arithmetic (Vector2)
 Vector2 Vector2::operator+(Vector2 &other)
 {
     return Vector2(x + other.x, y + other.y);
@@ -59,4 +72,5 @@ Vector2 Vector2::operator/(Vector2 &other)
 {
     return Vector2(x / other.x, y / other.y);
 }
+#pragma endregion
 #pragma endregion

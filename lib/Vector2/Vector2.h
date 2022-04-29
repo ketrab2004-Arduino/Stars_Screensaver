@@ -19,6 +19,9 @@ struct Vector2
     void operator*=(Vector2 &other);
     void operator/=(Vector2 &other);
 
+    bool operator==(Vector2 &other);
+    bool operator!=(Vector2 &other);
+
     Vector2 operator+(Vector2 &other);
     Vector2 operator-(Vector2 &other);
     Vector2 operator*(Vector2 &other);
