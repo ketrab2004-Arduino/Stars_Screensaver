@@ -45,18 +45,17 @@ uint8_t Star::distance(Adafruit_ILI9341 *tft)
 {
     int16_t maxDist = (tft->width() + tft->height()) >> 2; // average of width and height, divide by 2 again to get the "radius"
 
-    int16_t dist = (
-            (int32_t)(
-                pos - // subtract to get the difference
-                Vector2( // Vector2 at the center
-                    tft->width() >> 1, // width / 2
-                    tft->height() >> 1 // height / 2
-                )
-            ).magnitude() // squared magnitude (faster than non-squared)
-            << 8 // multiply by 256
-        ) / maxDist; // to transform 0-1 to 0-255
+    return min(
+        (
+            (int32_t)( // cast to int32_t because 128 << 8 = 32768, 32767 is the limit for int16_t
+                // subtract to get the difference
+                pos - Vector2( tft->width() >> 1, tft->height() >> 1 ) // Vector2 at the center
+            ).magnitude()
+            << 8 // multiply by 256 (2^8)
+        ) / maxDist, // divide to transform to 0-255 range
 
-    return min(dist, (int16_t)255); // cap at 255
+        (int16_t)255 // cap at 255 (with min() above)
+    );
 }
 
 float Star::randomDirection()
