@@ -10,6 +10,6 @@
 
 #define TFT_BRIGHTNESS  127
 
-#define STAR_COUNT 12
+#define STAR_COUNT 32
 
 #endif
