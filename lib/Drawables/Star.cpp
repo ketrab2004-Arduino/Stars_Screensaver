@@ -26,4 +26,15 @@ void Star::undraw(Adafruit_ILI9341 &tft)
 }
 void Star::doStep(unsigned long delta, Adafruit_ILI9341 &tft)
 {
+    float speed = .5f;
+    pos += Vector2( // move star by direction * delta * speed
+        sinf(direction) * delta * speed,
+        cosf(direction) * delta * speed
+    );
+
+    if (pos.x < 0 || pos.x > tft.width() || // if new pos is outside the screen
+        pos.y < 0 || pos.y > tft.height()) {
+        pos = Vector2(tft.width() >> 1, tft.height() >> 1); // reset to center (width and height are divided by 2)
+        direction = random(0, PI * 2000) * 0.001f; // generate new random direction
+    }
 }
