@@ -11,7 +11,7 @@ int16_t Vector2::sqrMagnitude() { return x*x + y*y; }
 Vector2 Vector2::normalized() { return Vector2(x, y) / magnitude(); }
 
 #pragma region Operators
-Vector2::operator String() const { return "(", String(x) + ", " + String(y) + ")"; }
+Vector2::operator String() const { return "(" + String(x) + ", " + String(y) + ")"; }
 
 // Comparison
 bool Vector2::operator==(Vector2 &other) { return x == other.x && y == other.y; }
