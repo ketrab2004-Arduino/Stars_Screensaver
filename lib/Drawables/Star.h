@@ -21,6 +21,7 @@ public:
     void undraw(Adafruit_ILI9341 *tft);
     void doStep(unsigned long delta, Adafruit_ILI9341 *tft);
 
+    uint8_t distance(Adafruit_ILI9341 *tft);
     static float randomDirection();
 };
 
