@@ -13,6 +13,8 @@ Adafruit_ILI9341 tft(TFT_CS, TFT_DC);
 
 Drawable *drawables[STAR_COUNT];
 
+unsigned long lastMillis = millis();
+
 void setup() {
     debugBegin(9600);
     tft.begin();
@@ -29,7 +31,7 @@ void setup() {
         drawables[i] = new Star( // replace each null pointer with a Star*
             (int16_t)random(0, tft.width()),
             (int16_t)random(0, tft.height()),
-            random(0, PI * 2000) * 0.001
+            random(0, PI * 2000) * 0.001f
         );
     }
 
@@ -38,5 +40,7 @@ void setup() {
 }
 
 void loop() {
-    
+    unsigned long delta = millis() - lastMillis;
+    lastMillis = millis();
+
 }
