@@ -20,6 +20,10 @@ void setup() {
     debugBegin(9600);
     tft.begin();
 
+    // set tft brightness
+    pinMode(TFT_BL, OUTPUT);
+    analogWrite(TFT_BL, TFT_BRIGHTNESS);
+
     // if analog input pin 0 is unconnected, random analog
     // noise will cause the call to randomSeed() to generate
     // different seed numbers each time the sketch runs.
