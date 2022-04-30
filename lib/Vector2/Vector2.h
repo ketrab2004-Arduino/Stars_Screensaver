@@ -20,39 +20,38 @@ struct Vector2
 
 
     #pragma region Operators
-    bool operator==(Vector2 &other);
-    bool operator!=(Vector2 &other);
+    bool operator==(const Vector2 &other);
+    bool operator!=(const Vector2 &other);
 
     void operator++();
     void operator--();
 
     operator String() const;
 
+    Vector2 operator+(const Vector2 &other);
+    void operator+=(const Vector2 &other);
 
-    Vector2 operator+(Vector2 &other);
-    void operator+=(Vector2 &other);
+    Vector2 operator-(const Vector2 &other);
+    void operator-=(const Vector2 &other);
 
-    Vector2 operator-(Vector2 &other);
-    void operator-=(Vector2 &other);
+    Vector2 operator*(const Vector2 &other);
+    void operator*=(const Vector2 &other);
 
-    Vector2 operator*(Vector2 &other);
-    void operator*=(Vector2 &other);
-
-    Vector2 operator/(Vector2 &other);
-    void operator/=(Vector2 &other);
+    Vector2 operator/(const Vector2 &other);
+    void operator/=(const Vector2 &other);
 
 
-    Vector2 operator+(int16_t other);
-    void operator+=(int16_t other);
+    Vector2 operator+(const int16_t other);
+    void operator+=(const int16_t other);
 
-    Vector2 operator-(int16_t other);
-    void operator-=(int16_t other);
+    Vector2 operator-(const int16_t other);
+    void operator-=(const int16_t other);
 
-    Vector2 operator*(int16_t other);
-    void operator*=(int16_t other);
+    Vector2 operator*(const int16_t other);
+    void operator*=(const int16_t other);
 
-    Vector2 operator/(int16_t other);
-    void operator/=(int16_t other);
+    Vector2 operator/(const int16_t other);
+    void operator/=(const int16_t other);
     #pragma endregion
 };
 
