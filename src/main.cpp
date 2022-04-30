@@ -29,9 +29,9 @@ void setup() {
     // initialize stars
     for (size_t i = 0; i < STAR_COUNT; i++) {
         drawables[i] = new Star( // replace each null pointer with a Star*
-            (int16_t)random(0, tft.width()),
-            (int16_t)random(0, tft.height()),
-            random(0, PI * 2000) * 0.001f
+            // (int16_t)random(0, tft.width()),
+            // (int16_t)random(0, tft.height()),
+            // random(0, PI * 2000) * 0.001f
         );
     }
 
