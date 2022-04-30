@@ -18,6 +18,7 @@ public:
 
     void draw();
     void undraw();
+    void doStep();
 };
 
 #endif

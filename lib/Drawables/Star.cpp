@@ -14,3 +14,14 @@ Star::Star(int16_t x, int16_t y, float dir): Drawable(x, y) // extend the drawab
 {
     direction = dir;
 }
+
+
+void Star::draw()
+{
+}
+void Star::undraw()
+{
+}
+void Star::doStep()
+{
+}
