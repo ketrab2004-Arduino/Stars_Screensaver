@@ -17,9 +17,9 @@ public:
     Star(Vector2 pos, float dir);
     Star(int16_t x, int16_t y, float dir);
 
-    void draw(Adafruit_ILI9341 &tft);
-    void undraw(Adafruit_ILI9341 &tft);
-    void doStep(unsigned long delta, Adafruit_ILI9341 &tft);
+    void draw(Adafruit_ILI9341 *tft);
+    void undraw(Adafruit_ILI9341 *tft);
+    void doStep(unsigned long delta, Adafruit_ILI9341 *tft);
 
     static float randomDirection();
 };

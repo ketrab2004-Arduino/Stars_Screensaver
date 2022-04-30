@@ -14,10 +14,10 @@ public:
     Drawable(Vector2 pos);
     Drawable(int16_t x, int16_t y);
 
-    virtual void draw(Adafruit_ILI9341 &tft) = 0; // = 0 means that this method has to be implemented in the derived class
-    virtual void undraw(Adafruit_ILI9341 &tft) = 0;
+    virtual void draw(Adafruit_ILI9341 *tft) = 0; // = 0 means that this method has to be implemented in the derived class
+    virtual void undraw(Adafruit_ILI9341 *tft) = 0;
 
-    virtual void doStep(unsigned long delta, Adafruit_ILI9341 &tft); // no = 0 because this method is optional
+    virtual void doStep(unsigned long delta, Adafruit_ILI9341 *tft); // no = 0 because this method is optional
 };
 
 #endif

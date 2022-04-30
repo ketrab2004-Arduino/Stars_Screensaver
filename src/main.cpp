@@ -10,6 +10,7 @@
 #include <Star.h>
 
 Adafruit_ILI9341 tft(TFT_CS, TFT_DC);
+Adafruit_ILI9341 *tftPtr = &tft;
 
 Drawable *drawables[STAR_COUNT];
 
@@ -48,13 +49,13 @@ void loop() {
 
     for (size_t i = 0; i < STAR_COUNT; i++) {
         // undraw last step
-        drawables[i]->undraw(tft);
+        drawables[i]->undraw(tftPtr);
 
         // calculate next step
-        drawables[i]->doStep(delta, tft);
+        drawables[i]->doStep(delta, tftPtr);
 
         // draw next step
-        drawables[i]->draw(tft);
+        drawables[i]->draw(tftPtr);
     }
 
     // end writing

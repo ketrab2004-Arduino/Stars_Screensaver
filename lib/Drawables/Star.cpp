@@ -16,15 +16,15 @@ Star::Star(int16_t x, int16_t y, float dir): Drawable(x, y) // extend the drawab
 }
 
 
-void Star::draw(Adafruit_ILI9341 &tft)
+void Star::draw(Adafruit_ILI9341 *tft)
 {
-    tft.writePixel(pos.x, pos.y, ILI9341_WHITE); // draw white star
+    tft->writePixel(pos.x, pos.y, ILI9341_WHITE); // draw white star
 }
-void Star::undraw(Adafruit_ILI9341 &tft)
+void Star::undraw(Adafruit_ILI9341 *tft)
 {
-    tft.writePixel(pos.x, pos.y, ILI9341_BLACK); // fill star with black (background colour)
+    tft->writePixel(pos.x, pos.y, ILI9341_BLACK); // fill star with black (background colour)
 }
-void Star::doStep(unsigned long delta, Adafruit_ILI9341 &tft)
+void Star::doStep(unsigned long delta, Adafruit_ILI9341 *tft)
 {
     float speed = .25f;
     pos += Vector2( // move star by direction * delta * speed
@@ -32,9 +32,9 @@ void Star::doStep(unsigned long delta, Adafruit_ILI9341 &tft)
         cosf(direction) * delta * speed
     );
 
-    if (pos.x < 0 || pos.x > tft.width() || // if new pos is outside the screen
-        pos.y < 0 || pos.y > tft.height()) {
-        pos = Vector2(tft.width() >> 1, tft.height() >> 1); // reset to center (width and height are divided by 2)
+    if (pos.x < 0 || pos.x > tft->width() || // if new pos is outside the screen
+        pos.y < 0 || pos.y > tft->height()) {
+        pos = Vector2(tft->width() >> 1, tft->height() >> 1); // reset to center (width and height are divided by 2)
         direction = randomDirection(); // generate new random direction
     }
 }
