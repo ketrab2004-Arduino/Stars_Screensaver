@@ -51,7 +51,7 @@ void loop() {
         drawables[i]->undraw(tft);
 
         // calculate next step
-        drawables[i]->doStep(delta);
+        drawables[i]->doStep(delta, tft);
 
         // draw next step
         drawables[i]->draw(tft);
