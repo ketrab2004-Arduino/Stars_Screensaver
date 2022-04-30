@@ -27,7 +27,7 @@ void Star::undraw(Adafruit_ILI9341 *tft)
 }
 void Star::doStep(unsigned long delta, Adafruit_ILI9341 *tft)
 {
-    float speed = .25f;
+    float speed = .3f;
     pos += Vector2( // move star by direction * delta * speed
         sinf(direction) * delta * speed,
         cosf(direction) * delta * speed
@@ -44,18 +44,19 @@ void Star::doStep(unsigned long delta, Adafruit_ILI9341 *tft)
 uint8_t Star::distance(Adafruit_ILI9341 *tft)
 {
     int16_t maxDist = (tft->width() + tft->height()) >> 2; // average of width and height, divide by 2 again to get the "radius"
-    maxDist *= maxDist; // square it
-    // because sqrDistance is also squared
 
-    return ((
-            pos - // subtract to get the difference
-            Vector2( // Vector2 at the center
-                tft->width() >> 1, // width / 2
-                tft->height() >> 1 // height / 2
-            )
-        ).sqrMagnitude() // squared magnitude (faster than non-squared)
-            << 8) // multiply by 256
-        / maxDist; // to transform 0-1 to 0-255
+    int16_t dist = (
+            (int32_t)(
+                pos - // subtract to get the difference
+                Vector2( // Vector2 at the center
+                    tft->width() >> 1, // width / 2
+                    tft->height() >> 1 // height / 2
+                )
+            ).magnitude() // squared magnitude (faster than non-squared)
+            << 8 // multiply by 256
+        ) / maxDist; // to transform 0-1 to 0-255
+
+    return min(dist, (int16_t)255); // cap at 255
 }
 
 float Star::randomDirection()
