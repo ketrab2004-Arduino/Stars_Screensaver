@@ -20,6 +20,8 @@ public:
     void draw(Adafruit_ILI9341 &tft);
     void undraw(Adafruit_ILI9341 &tft);
     void doStep(unsigned long delta, Adafruit_ILI9341 &tft);
+
+    static float randomDirection();
 };
 
 #endif
