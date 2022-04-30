@@ -26,7 +26,7 @@ void Star::undraw(Adafruit_ILI9341 &tft)
 }
 void Star::doStep(unsigned long delta, Adafruit_ILI9341 &tft)
 {
-    float speed = .5f;
+    float speed = .25f;
     pos += Vector2( // move star by direction * delta * speed
         sinf(direction) * delta * speed,
         cosf(direction) * delta * speed
