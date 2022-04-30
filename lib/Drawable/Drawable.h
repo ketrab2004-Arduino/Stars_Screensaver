@@ -9,6 +9,10 @@ protected:
     Vector2 pos;
 
 public:
+    Drawable();
+    Drawable(Vector2 pos);
+    Drawable(int16_t x, int16_t y);
+
     virtual void draw() = 0; // = 0 means that this method has to be implemented in the derived class
     virtual void undraw() = 0;
 
