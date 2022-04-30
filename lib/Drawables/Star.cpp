@@ -16,12 +16,12 @@ Star::Star(int16_t x, int16_t y, float dir): Drawable(x, y) // extend the drawab
 }
 
 
-void Star::draw()
+void Star::draw(Adafruit_ILI9341 &tft)
 {
 }
-void Star::undraw()
+void Star::undraw(Adafruit_ILI9341 &tft)
 {
 }
-void Star::doStep()
+void Star::doStep(unsigned long delta)
 {
 }
