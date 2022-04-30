@@ -43,4 +43,20 @@ void loop() {
     unsigned long delta = millis() - lastMillis;
     lastMillis = millis();
 
+    // prepare for writing
+    tft.startWrite();
+
+    for (size_t i = 0; i < STAR_COUNT; i++) {
+        // undraw last step
+        drawables[i]->undraw(tft);
+
+        // calculate next step
+        drawables[i]->doStep(delta);
+
+        // draw next step
+        drawables[i]->draw(tft);
+    }
+
+    // end writing
+    tft.endWrite();
 }
