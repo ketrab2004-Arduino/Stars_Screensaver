@@ -11,7 +11,10 @@ protected:
     float direction; // float for sinf and cosf
 
 public:
-    using Drawable::Drawable; // use Drawable's constructors
+    // using Drawable::Drawable; // use Drawable's constructors
+    Star();
+    Star(Vector2 pos, float dir);
+    Star(int16_t x, int16_t y, float dir);
 
     void draw();
     void undraw();
