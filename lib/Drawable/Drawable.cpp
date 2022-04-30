@@ -14,3 +14,6 @@ Drawable::Drawable(int16_t x, int16_t y)
 {
     pos = Vector2(x, y);
 }
+
+
+const Vector2 Drawable::getPos() { return pos; }
