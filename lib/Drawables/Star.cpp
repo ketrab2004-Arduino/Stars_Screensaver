@@ -22,6 +22,6 @@ void Star::draw(Adafruit_ILI9341 &tft)
 void Star::undraw(Adafruit_ILI9341 &tft)
 {
 }
-void Star::doStep(unsigned long delta)
+void Star::doStep(unsigned long delta, Adafruit_ILI9341 &tft)
 {
 }
