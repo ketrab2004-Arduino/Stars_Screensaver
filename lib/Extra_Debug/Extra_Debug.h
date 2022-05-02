@@ -23,5 +23,6 @@
 #endif
 
 #define debugVar(s,x)       debugF(s); debugln(x)
+#define debugNewline()      debuglnF("");
 
 #endif
