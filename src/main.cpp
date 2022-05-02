@@ -68,9 +68,6 @@ void loop() {
     fpsText.draw(tftPtr);
     #endif
 
-    // prepare for writing
-    tft.startWrite();
-
     for (size_t i = 0; i < STAR_COUNT; i++) {
         // undraw last step
         drawables[i]->undraw(tftPtr);
@@ -81,7 +78,4 @@ void loop() {
         // draw next step
         drawables[i]->draw(tftPtr);
     }
-
-    // end writing
-    tft.endWrite();
 }

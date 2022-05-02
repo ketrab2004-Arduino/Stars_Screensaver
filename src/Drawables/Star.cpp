@@ -22,11 +22,11 @@ Star::Star(int16_t x, int16_t y, float dir): Drawable(x, y) // extend the drawab
 void Star::draw(Adafruit_ILI9341 *tft)
 {
     uint8_t dist = distance(tft);
-    tft->writePixel(pos.x, pos.y, tft->color565(dist, dist, dist)); // draw white star
+    tft->drawPixel(pos.x, pos.y, tft->color565(dist, dist, dist)); // draw white star
 }
 void Star::undraw(Adafruit_ILI9341 *tft)
 {
-    tft->writePixel(pos.x, pos.y, ILI9341_BLACK); // fill star with black (background colour)
+    tft->drawPixel(pos.x, pos.y, ILI9341_BLACK); // fill star with black (background colour)
 }
 void Star::doStep(unsigned long delta, Adafruit_ILI9341 *tft)
 {
