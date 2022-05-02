@@ -8,7 +8,7 @@
 #define TFT_BL 5
 #define SD_CS  4
 
-#define TFT_BRIGHTNESS 128
+#define TFT_BRIGHTNESS 255
 
 #define STAR_COUNT 32
 
