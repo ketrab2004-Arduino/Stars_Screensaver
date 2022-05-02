@@ -30,7 +30,12 @@ void Star::undraw(Adafruit_ILI9341 *tft)
 }
 void Star::doStep(unsigned long delta, Adafruit_ILI9341 *tft)
 {
-    float speed = .3f;
+    float speed = map( // map distance to speed
+        distance(tft),
+        0, 255, // from range
+        STAR_MIN_SPEED, STAR_MAX_SPEED // to range
+    ) * 0.001; // convert back to float
+    
     pos += Vector2( // move star by direction * delta * speed
         sinf(direction) * delta * speed,
         cosf(direction) * delta * speed
