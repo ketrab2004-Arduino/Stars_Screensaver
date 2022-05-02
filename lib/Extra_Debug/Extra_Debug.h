@@ -21,4 +21,7 @@
     #define debug(x)
     #define debugln(x)
 #endif
+
+#define debugVar(s,x)       debugF(s); debugln(x)
+
 #endif
