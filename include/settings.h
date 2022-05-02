@@ -14,4 +14,6 @@
 #define STAR_MIN_SPEED 200 // pixels per second
 #define STAR_MAX_SPEED 400
 
+#define SHOW_FPS 1
+
 #endif
