@@ -18,7 +18,7 @@ Drawable *drawables[STAR_COUNT];
 #if SHOW_FPS
 #include <Drawables/Text.h>
 
-String fpsString = "FPS: 0";
+String fpsString = "0";
 Text fpsText(5, 5, fpsString.c_str());
 #endif
 
@@ -59,7 +59,7 @@ void loop() {
     #if SHOW_FPS
     fpsText.undraw(tftPtr);
 
-    fpsString = /*"FPS: " +*/ String(1000 / delta);
+    fpsString = String(1000 / delta);
     fpsText.setText(fpsString.c_str());
 
     // Text's doStep method is empty
