@@ -1,6 +1,6 @@
 # Stars Screensaver
 
-![](./memorabilia/good.jpeg)
+![A slightly blurry image of the star screensaver on an Arduino MEGA 2560, with a fps counter in the top left, but the screen is rotated 90 degrees counter-clockwise in the photo.](./memorabilia/32_slightly-blurry_fps.jpeg)
 <br/>
 
 ## Parts:
@@ -20,4 +20,4 @@
     and stars near the edge of the screen will travel at MAX speed)
 1. Upload the sketch
 1. See the stars fly by
-1. (don't run it for too long, since my Arduino starts to get warm)
+1. (don't keep it running for too long, since my Arduino starts to get warm)
