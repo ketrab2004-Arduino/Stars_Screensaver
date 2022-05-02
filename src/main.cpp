@@ -9,6 +9,8 @@
 #include <Drawables/Drawable.h>
 #include <Drawables/Star.h>
 
+using namespace Drawables;
+
 Adafruit_ILI9341 tft(TFT_CS, TFT_DC);
 Adafruit_ILI9341 *tftPtr = &tft;
 

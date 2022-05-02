@@ -4,6 +4,9 @@
 #include <Vector2.h>
 #include <Adafruit_ILI9341.h>
 
+namespace Drawables
+{
+
 class Drawable // abstract
 {
 protected:
@@ -21,5 +24,7 @@ public:
 
     virtual void doStep(unsigned long delta, Adafruit_ILI9341 *tft); // no = 0 because this method is optional
 };
+
+} // namespace Drawables
 
 #endif

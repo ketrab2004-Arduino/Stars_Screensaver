@@ -1,5 +1,8 @@
 #include "Drawables/Drawable.h"
 
+namespace Drawables
+{
+
 Drawable::Drawable()
 {
     pos = Vector2();
@@ -17,3 +20,5 @@ Drawable::Drawable(int16_t x, int16_t y)
 
 
 const Vector2 Drawable::getPos() { return pos; }
+
+} // namespace Drawables

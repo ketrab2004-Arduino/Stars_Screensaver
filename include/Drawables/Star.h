@@ -6,6 +6,9 @@
 #include <Drawables/Drawable.h>
 #include <Vector2.h>
 
+namespace Drawables
+{
+
 class Star: public Drawable
 {
 protected:
@@ -24,5 +27,7 @@ public:
     uint8_t distance(Adafruit_ILI9341 *tft);
     static float randomDirection();
 };
+
+} // namespace Drawables
 
 #endif

@@ -1,5 +1,8 @@
 #include "Drawables/Star.h"
 
+namespace Drawables
+{
+
 Star::Star(): Drawable() // extend the drawable() constructor
 {
     direction = 0;
@@ -64,3 +67,5 @@ float Star::randomDirection()
     // random() returns a long, so *1000 and /1000 to get a float
     return random(0, PI * 2000) * 0.001f;
 }
+
+} // namespace Drawables
