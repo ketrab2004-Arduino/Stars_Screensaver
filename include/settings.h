@@ -6,7 +6,7 @@
 #define TFT_CS 10
 #define TFT_DC 9
 #define TFT_BL 5
-#define SD_CS  4
+// #define SD_CS  4
 
 #define TFT_BRIGHTNESS 255
 
