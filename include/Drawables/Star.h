@@ -1,5 +1,5 @@
-#ifndef __DRAWABLES_START_H__
-#define __DRAWABLES_START_H__
+#ifndef __DRAWABLES_STAR_H__
+#define __DRAWABLES_STAR_H__
 
 #include <stdint.h>
 #include <Adafruit_ILI9341.h>
@@ -16,7 +16,6 @@ protected:
     float direction; // float for sinf and cosf
 
 public:
-    // using Drawable::Drawable; // use Drawable's constructors
     Star();
     Star(Vector2 pos, float dir);
     Star(int16_t x, int16_t y, float dir);
