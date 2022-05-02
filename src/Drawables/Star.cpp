@@ -1,4 +1,4 @@
-#include "Star.h"
+#include "Drawables/Star.h"
 
 Star::Star(): Drawable() // extend the drawable() constructor
 {

@@ -6,8 +6,8 @@
 #include <settings.h>
 #include <Extra_Debug.h>
 
-#include <Drawable.h>
-#include <Star.h>
+#include <Drawables/Drawable.h>
+#include <Drawables/Star.h>
 
 Adafruit_ILI9341 tft(TFT_CS, TFT_DC);
 Adafruit_ILI9341 *tftPtr = &tft;
