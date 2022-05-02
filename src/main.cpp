@@ -15,6 +15,12 @@ Adafruit_ILI9341 tft(TFT_CS, TFT_DC);
 Adafruit_ILI9341 *tftPtr = &tft;
 
 Drawable *drawables[STAR_COUNT];
+#if SHOW_FPS
+#include <Drawables/Text.h>
+
+String fpsString = "FPS: 0";
+Text fpsText(5, 5, fpsString.c_str());
+#endif
 
 unsigned long lastMillis = millis();
 
@@ -49,6 +55,18 @@ void setup() {
 void loop() {
     unsigned long delta = millis() - lastMillis;
     lastMillis = millis();
+
+    #if SHOW_FPS
+    fpsText.undraw(tftPtr);
+
+    fpsString = /*"FPS: " +*/ String(1000 / delta);
+    fpsText.setText(fpsString.c_str());
+
+    // Text's doStep method is empty
+    // fpsText.doStep(delta, tftPtr);
+
+    fpsText.draw(tftPtr);
+    #endif
 
     // prepare for writing
     tft.startWrite();
