@@ -10,6 +10,8 @@
 
 #define TFT_BRIGHTNESS 255
 
-#define STAR_COUNT 32
+#define STAR_COUNT 24
+#define STAR_MIN_SPEED 200 // pixels per second
+#define STAR_MAX_SPEED 400
 
 #endif
