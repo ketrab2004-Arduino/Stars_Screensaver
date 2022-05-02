@@ -12,7 +12,6 @@
 using namespace Drawables;
 
 Adafruit_ILI9341 tft(TFT_CS, TFT_DC);
-Adafruit_ILI9341 *tftPtr = &tft;
 
 Drawable *drawables[STAR_COUNT];
 #if SHOW_FPS
@@ -57,7 +56,7 @@ void loop() {
     lastMillis = millis();
 
     #if SHOW_FPS
-    fpsText.undraw(tftPtr);
+    fpsText.undraw(tft);
 
     fpsString = String(1000 / delta);
     fpsText.setText(fpsString.c_str());
@@ -65,17 +64,17 @@ void loop() {
     // Text's doStep method is empty
     // fpsText.doStep(delta, tftPtr);
 
-    fpsText.draw(tftPtr);
+    fpsText.draw(tft);
     #endif
 
     for (size_t i = 0; i < STAR_COUNT; i++) {
         // undraw last step
-        drawables[i]->undraw(tftPtr);
+        drawables[i]->undraw(tft);
 
         // calculate next step
-        drawables[i]->doStep(delta, tftPtr);
+        drawables[i]->doStep(delta, tft);
 
         // draw next step
-        drawables[i]->draw(tftPtr);
+        drawables[i]->draw(tft);
     }
 }

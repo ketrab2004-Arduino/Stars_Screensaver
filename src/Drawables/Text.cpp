@@ -19,21 +19,21 @@ Text::Text(int16_t x, int16_t y, const char *text): Drawable(x, y) // extend the
 }
 
 
-void Text::draw(Adafruit_ILI9341 *tft)
+void Text::draw(Adafruit_ILI9341 &tft)
 {
-    tft->setTextColor(ILI9341_WHITE);
-    tft->setCursor(pos.x, pos.y);
-    tft->print(text);
+    tft.setTextColor(ILI9341_WHITE);
+    tft.setCursor(pos.x, pos.y);
+    tft.print(text);
 }
 
-void Text::undraw(Adafruit_ILI9341 *tft)
+void Text::undraw(Adafruit_ILI9341 &tft)
 {
-    tft->setTextColor(ILI9341_BLACK);
-    tft->setCursor(pos.x, pos.y);
-    tft->print(text);
+    tft.setTextColor(ILI9341_BLACK);
+    tft.setCursor(pos.x, pos.y);
+    tft.print(text);
 }
 
-void Text::doStep(unsigned long delta, Adafruit_ILI9341 *tft)
+void Text::doStep(unsigned long delta, Adafruit_ILI9341 &tft)
 {} // do nothing
 
 

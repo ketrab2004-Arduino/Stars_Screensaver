@@ -19,16 +19,16 @@ Star::Star(int16_t x, int16_t y, float dir): Drawable(x, y) // extend the drawab
 }
 
 
-void Star::draw(Adafruit_ILI9341 *tft)
+void Star::draw(Adafruit_ILI9341 &tft)
 {
     uint8_t dist = distance(tft);
-    tft->drawPixel(pos.x, pos.y, tft->color565(dist, dist, dist)); // draw white star
+    tft.drawPixel(pos.x, pos.y, tft.color565(dist, dist, dist)); // draw white star
 }
-void Star::undraw(Adafruit_ILI9341 *tft)
+void Star::undraw(Adafruit_ILI9341 &tft)
 {
-    tft->drawPixel(pos.x, pos.y, ILI9341_BLACK); // fill star with black (background colour)
+    tft.drawPixel(pos.x, pos.y, ILI9341_BLACK); // fill star with black (background colour)
 }
-void Star::doStep(unsigned long delta, Adafruit_ILI9341 *tft)
+void Star::doStep(unsigned long delta, Adafruit_ILI9341 &tft)
 {
     float speed = map( // map distance to speed
         distance(tft),
@@ -41,23 +41,23 @@ void Star::doStep(unsigned long delta, Adafruit_ILI9341 *tft)
         cosf(direction) * delta * speed
     );
 
-    if (pos.x < 0 || pos.x > tft->width() || // if new pos is outside the screen
-        pos.y < 0 || pos.y > tft->height()) {
-        pos = Vector2(tft->width() >> 1, tft->height() >> 1); // reset to center (width and height are divided by 2)
+    if (pos.x < 0 || pos.x > tft.width() || // if new pos is outside the screen
+        pos.y < 0 || pos.y > tft.height()) {
+        pos = Vector2(tft.width() >> 1, tft.height() >> 1); // reset to center (width and height are divided by 2)
         direction = randomDirection(); // generate new random direction
     }
 }
 
 
-uint8_t Star::distance(Adafruit_ILI9341 *tft)
+uint8_t Star::distance(Adafruit_ILI9341 &tft)
 {
-    int16_t maxDist = (tft->width() + tft->height()) >> 2; // average of width and height, divide by 2 again to get the "radius"
+    int16_t maxDist = (tft.width() + tft.height()) >> 2; // average of width and height, divide by 2 again to get the "radius"
 
     return min(
         (
             (int32_t)( // cast to int32_t because 128 << 8 = 32768, 32767 is the limit for int16_t
                 // subtract to get the difference
-                pos - Vector2( tft->width() >> 1, tft->height() >> 1 ) // Vector2 at the center
+                pos - Vector2( tft.width() >> 1, tft.height() >> 1 ) // Vector2 at the center
             ).magnitude()
             << 8 // multiply by 256 (2^8)
         ) / maxDist, // divide to transform to 0-255 range
