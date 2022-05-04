@@ -5,6 +5,9 @@
 #include <Adafruit_ILI9341.h>
 #include <Drawables/Drawable.h>
 #include <Vector2.h>
+
+#include <CosSin_Lookup-Table.h>
+
 #include "settings.h"
 
 namespace Drawables

@@ -34,11 +34,11 @@ void Star::doStep(unsigned long delta, Adafruit_ILI9341 &tft)
         distance(tft),
         0, 255, // from range
         STAR_MIN_SPEED, STAR_MAX_SPEED // to range
-    ) * 0.001; // convert back to float
+    ) * 0.00000787401f; // convert back to float (0.001f divided by 127 (because getSin and getCos are * 127))
     
     pos += Vector2( // move star by direction * delta * speed
-        sinf(direction) * delta * speed,
-        cosf(direction) * delta * speed
+        speed * getSin(direction) * delta,
+        speed * getCos(direction) * delta
     );
 
     if (pos.x < 0 || pos.x > tft.width() || // if new pos is outside the screen
