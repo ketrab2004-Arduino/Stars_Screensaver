@@ -1,0 +1,28 @@
+#include "CosSin_Lookup-Table.h"
+
+static const int8_t getSin(uint8_t mappedDegrees)
+{
+    // make sure it's within 0-255
+    mappedDegrees %= 256;
+
+    // sin split in half (so above and below 0 are the same)
+    uint8_t halved = mappedDegrees % 128;
+
+    // get the index of the sin value (1/4 of mappedDegrees)
+    uint8_t index = halved % 64;
+
+    // if above half, invert index (so instead of going up, it goes down)
+    if (halved > 64) index = 64 - index;
+
+    // get the sin value
+    int8_t sin = lookupTable[index];
+
+    // if mappedDegrees is past half, invert index (so instead of going above 0, it goes below)
+    return mappedDegrees < 128 ? sin : -sin;
+}
+
+static const int8_t getCos(uint8_t mappedDegrees)
+{
+    // add 64 to get cos (+1 because it isn't completely mirrored (or something idk))
+    return getSin(mappedDegrees + 65);
+}
