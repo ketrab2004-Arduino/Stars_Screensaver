@@ -8,12 +8,12 @@ Star::Star(): Drawable() // extend the drawable() constructor
     direction = 0;
 }
 
-Star::Star(Vector2 pos, float dir): Drawable(pos) // extend the drawable(pos) constructor
+Star::Star(Vector2 pos, uint8_t dir): Drawable(pos) // extend the drawable(pos) constructor
 {
     direction = dir;
 }
 
-Star::Star(int16_t x, int16_t y, float dir): Drawable(x, y) // extend the drawable(x, y) constructor
+Star::Star(int16_t x, int16_t y, uint8_t dir): Drawable(x, y) // extend the drawable(x, y) constructor
 {
     direction = dir;
 }
@@ -66,11 +66,10 @@ uint8_t Star::distance(Adafruit_ILI9341 &tft)
     );
 }
 
-float Star::randomDirection()
+uint8_t Star::randomDirection()
 {
-    // direction should be between 0 and 2*PI (1 TAU)
-    // random() returns a long, so *1000 and /1000 to get a float
-    return random(0, PI * 2000) * 0.001f;
+    // direction should be between 0 and 255 (0-360°)
+    return random(0, 255);
 }
 
 } // namespace Drawables

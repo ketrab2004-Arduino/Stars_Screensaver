@@ -13,19 +13,19 @@ namespace Drawables
 class Star: public Drawable
 {
 protected:
-    float direction; // float for sinf and cosf
+    uint8_t direction; // uint8_t 0-255 (0-360°)
 
 public:
     Star();
-    Star(Vector2 pos, float dir);
-    Star(int16_t x, int16_t y, float dir);
+    Star(Vector2 pos, uint8_t dir);
+    Star(int16_t x, int16_t y, uint8_t dir);
 
     void draw(Adafruit_ILI9341 &tft);
     void undraw(Adafruit_ILI9341 &tft);
     void doStep(unsigned long delta, Adafruit_ILI9341 &tft);
 
     uint8_t distance(Adafruit_ILI9341 &tft);
-    static float randomDirection();
+    static uint8_t randomDirection();
 };
 
 } // namespace Drawables
