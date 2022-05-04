@@ -6,13 +6,13 @@ static const int8_t getSin(uint8_t mappedDegrees)
     mappedDegrees %= 256;
 
     // sin split in half (so above and below 0 are the same)
-    uint8_t halved = mappedDegrees % 128;
+    uint8_t halved = mappedDegrees % 129;
 
     // get the index of the sin value (1/4 of mappedDegrees)
-    uint8_t index = halved % 64;
+    uint8_t index = halved % 65;
 
     // if above half, invert index (so instead of going up, it goes down)
-    if (halved > 64) index = 64 - index;
+    if (halved > 64) index = 63 - index;
 
     // get the sin value
     int8_t sin = lookupTable[index];
