@@ -5,20 +5,33 @@ const int8_t getSin(uint8_t mappedDegrees)
     // make sure it's within 0-255
     mappedDegrees %= 256;
 
-    // sin split in half (so above and below 0 are the same)
-    uint8_t halved = mappedDegrees % 129;
+    if (mappedDegrees < 64) {
+        return lookupTable[mappedDegrees];
 
-    // get the index of the sin value (1/4 of mappedDegrees)
-    uint8_t index = halved % 65;
+    } else if (mappedDegrees < 128) {
+        return lookupTable[64 - mappedDegrees];
 
-    // if above half, invert index (so instead of going up, it goes down)
-    if (halved > 64) index = 63 - index;
+    } else if (mappedDegrees < 192) {
+        return -lookupTable[mappedDegrees];
 
-    // get the sin value
-    int8_t sin = lookupTable[index];
+    } else {
+        return -lookupTable[64 - mappedDegrees];
+    }
 
-    // if mappedDegrees is past half, invert index (so instead of going above 0, it goes below)
-    return mappedDegrees < 128 ? sin : -sin;
+    // // sin split in half (so above and below 0 are the same)
+    // uint8_t halved = mappedDegrees % 129;
+
+    // // get the index of the sin value (1/4 of mappedDegrees)
+    // uint8_t index = halved % 65;
+
+    // // if above half, invert index (so instead of going up, it goes down)
+    // if (halved > 64) index = 63 - index;
+
+    // // get the sin value
+    // int8_t sin = lookupTable[index];
+
+    // // if mappedDegrees is past half, invert index (so instead of going above 0, it goes below)
+    // return mappedDegrees < 128 ? sin : -sin;
 }
 
 const int8_t getCos(uint8_t mappedDegrees)
