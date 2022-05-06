@@ -26,7 +26,7 @@ static const int8_t lookupTable[64] = {
     0,3,6,9,12,16,19,22,25,28,31,34,37,40,43,46,49,52,54,57,60,63,66,68,71,73,76,78,81,83,86,88,90,92,94,96,98,100,102,104,106,108,109,111,112,114,115,116,118,119,120,121,122,123,123,124,125,125,126,126,126,127,127,127
 };
 
-static const int8_t getSin(uint8_t mappedDegrees);
-static const int8_t getCos(uint8_t mappedDegrees);
+const int8_t getSin(uint8_t mappedDegrees);
+const int8_t getCos(uint8_t mappedDegrees);
 
 #endif

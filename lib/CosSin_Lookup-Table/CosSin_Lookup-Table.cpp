@@ -1,6 +1,6 @@
 #include "CosSin_Lookup-Table.h"
 
-static const int8_t getSin(uint8_t mappedDegrees)
+const int8_t getSin(uint8_t mappedDegrees)
 {
     // make sure it's within 0-255
     mappedDegrees %= 256;
@@ -21,7 +21,7 @@ static const int8_t getSin(uint8_t mappedDegrees)
     return mappedDegrees < 128 ? sin : -sin;
 }
 
-static const int8_t getCos(uint8_t mappedDegrees)
+const int8_t getCos(uint8_t mappedDegrees)
 {
     // add 64 to get cos (+1 because it isn't completely mirrored (or something idk))
     return getSin(mappedDegrees + 65);
