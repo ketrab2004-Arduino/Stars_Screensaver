@@ -9,13 +9,13 @@ const int8_t getSin(uint8_t mappedDegrees)
         return lookupTable[mappedDegrees];
 
     } else if (mappedDegrees < 128) {
-        return lookupTable[64 - mappedDegrees];
+        return lookupTable[64 - (mappedDegrees -64)];
 
     } else if (mappedDegrees < 192) {
-        return -lookupTable[mappedDegrees];
+        return -lookupTable[(mappedDegrees -128)];
 
     } else {
-        return -lookupTable[64 - mappedDegrees];
+        return -lookupTable[64 - (mappedDegrees -192)];
     }
 
     // // sin split in half (so above and below 0 are the same)
