@@ -23,9 +23,9 @@ public:
     Star(Vector2 pos, uint8_t dir);
     Star(int16_t x, int16_t y, uint8_t dir);
 
-    void draw(Adafruit_ILI9341 &tft);
-    void undraw(Adafruit_ILI9341 &tft);
-    void doStep(unsigned long delta, Adafruit_ILI9341 &tft);
+    void draw(Adafruit_ILI9341 &tft) override;
+    void undraw(Adafruit_ILI9341 &tft) override;
+    void doStep(unsigned long delta, Adafruit_ILI9341 &tft) override;
 
     uint8_t distance(Adafruit_ILI9341 &tft);
     static uint8_t randomDirection();

@@ -19,9 +19,9 @@ public:
     Text(Vector2 pos, const char *text);
     Text(int16_t x, int16_t y, const char *text);
 
-    void draw(Adafruit_ILI9341 &tft);
-    void undraw(Adafruit_ILI9341 &tft);
-    void doStep(unsigned long delta, Adafruit_ILI9341 &tft);
+    void draw(Adafruit_ILI9341 &tft) override;
+    void undraw(Adafruit_ILI9341 &tft) override;
+    void doStep(unsigned long delta, Adafruit_ILI9341 &tft) override;
 
     void setText(const char *text);
 };
