@@ -18,6 +18,7 @@
     * `STAR_MIN_SPEED` & `STAR_MAX_SPEED`: for changing the speed of the stars in pixels per second
     (stars at the center travel at MIN speed
     and stars near the edge of the screen will travel at MAX speed)
+    * `SHOW_FPS`: if you would like to see the fps count
 1. Upload the sketch
 1. See the stars fly by
 1. (don't keep it running for too long, since my Arduino starts to get warm)
