@@ -15,10 +15,23 @@ Adafruit_ILI9341 tft(TFT_CS, TFT_DC);
 
 Drawable *drawables[STAR_COUNT];
 #if SHOW_FPS
-#include <Drawables/Text.h>
+    #include <Drawables/Text.h>
 
-String fpsString = "0";
-Text fpsText(5, 5, fpsString.c_str());
+    String fpsString = "0";
+    Text fpsText(5, 5, fpsString.c_str());
+
+    #if SHOW_MINMAX_FPS
+        #include <limits.h>
+
+        unsigned long maxFps = 0;
+        unsigned long minFps = ULONG_MAX; // unsigned, so -1 is below the minimum, so it will be the maximum
+
+        String minFpsString = "-";
+        Text minFpsText(5, 15, minFpsString.c_str());
+
+        String maxFpsString = "-";
+        Text maxFpsText(Vector2(5, 25), maxFpsString.c_str()); // Vector2, because otherwise there is an `undefined reference to `vtable for Drawables::Drawable'` error
+    #endif
 #endif
 
 unsigned long lastMillis = millis();
@@ -56,15 +69,43 @@ void loop() {
     lastMillis = millis();
 
     #if SHOW_FPS
-    fpsText.undraw(tft);
+        fpsText.undraw(tft);
 
-    fpsString = String(1000 / delta);
-    fpsText.setText(fpsString.c_str());
+        #if SHOW_MINMAX_FPS
+            minFpsText.undraw(tft);
+            maxFpsText.undraw(tft);
+        #endif
 
-    // Text's doStep method is empty
-    // fpsText.doStep(delta, tftPtr);
+        unsigned long fps = 1000 / delta;
 
-    fpsText.draw(tft);
+        #if SHOW_MINMAX_FPS
+            // only check for larger or less fps if 1.5 seconds have passed since the beginning of the program
+            if (lastMillis > 1500) {
+                if (fps > maxFps) { // set max if fps is higher
+                    maxFps = fps;
+                    maxFpsString = String(fps);
+                    maxFpsText.setText(maxFpsString.c_str());
+                }
+                if (fps < minFps) { // set min if fps is lower
+                    minFps = fps;
+                    minFpsString = String(fps);
+                    minFpsText.setText(minFpsString.c_str());
+                }
+            }
+        #endif
+
+        fpsString = String(fps);
+        fpsText.setText(fpsString.c_str());
+
+        // Text's doStep method is empty
+        // fpsText.doStep(delta, tftPtr);
+
+        fpsText.draw(tft);
+
+        #if SHOW_MINMAX_FPS
+            minFpsText.draw(tft);
+            maxFpsText.draw(tft);
+        #endif
     #endif
 
     for (size_t i = 0; i < STAR_COUNT; i++) {
