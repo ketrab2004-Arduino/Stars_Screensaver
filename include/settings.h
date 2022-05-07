@@ -16,4 +16,8 @@
 
 #define SHOW_FPS 1
 
+#if SHOW_FPS // only when fps is shown
+    #define SHOW_MINMAX_FPS 0
+#endif
+
 #endif
