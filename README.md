@@ -19,6 +19,8 @@
     (stars at the center travel at MIN speed
     and stars near the edge of the screen will travel at MAX speed)
     * `SHOW_FPS`: if you would like to see the fps count
+    * `SHOW_MINMAX_FPS`: if you would like to clearly see the min and max fps got
+    (only takes effect if `SHOW_FPS` is 1)
 1. Upload the sketch
 1. See the stars fly by
 1. (don't keep it running for too long, since my Arduino starts to get warm)
