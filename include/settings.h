@@ -15,6 +15,7 @@
 #define STAR_MAX_SPEED 400
 
 #define SHOW_FPS 1
+#define FPS_UPDATE_INTERVAL 100 // milliseconds
 
 #if SHOW_FPS // only when fps is shown
     #define SHOW_MINMAX_FPS 0

@@ -19,6 +19,8 @@
     (stars at the center travel at MIN speed
     and stars near the edge of the screen will travel at MAX speed)
     * `SHOW_FPS`: if you would like to see the fps count
+    * `FPS_UPDATE_INTERVAL`: how many milliseconds should pass between updating the fps counter
+    (to improve performance)
     * `SHOW_MINMAX_FPS`: if you would like to clearly see the min and max fps got
     (only takes effect if `SHOW_FPS` is 1)
 1. Upload the sketch
