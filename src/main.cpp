@@ -12,12 +12,15 @@
 using namespace Drawables;
 
 Adafruit_ILI9341 tft(TFT_CS, TFT_DC);
-
 Drawable *drawables[STAR_COUNT];
+
+
 #if SHOW_FPS
     #include <Drawables/Text.h>
 
-    String fpsString = "0";
+    unsigned long lastFpsUpdate = 0;
+
+    String fpsString = "--";
     Text fpsText(5, 5, fpsString.c_str());
 
     #if SHOW_MINMAX_FPS
@@ -26,15 +29,17 @@ Drawable *drawables[STAR_COUNT];
         unsigned long maxFps = 0;
         unsigned long minFps = ULONG_MAX; // unsigned, so -1 is below the minimum, so it will be the maximum
 
-        String minFpsString = "-";
+        String minFpsString = "--";
         Text minFpsText(5, 15, minFpsString.c_str());
 
-        String maxFpsString = "-";
+        String maxFpsString = "--";
         Text maxFpsText(Vector2(5, 25), maxFpsString.c_str()); // Vector2, because otherwise there is an `undefined reference to `vtable for Drawables::Drawable'` error
     #endif
 #endif
 
+
 unsigned long lastMillis = millis();
+
 
 void setup() {
     debugBegin(9600);
@@ -44,12 +49,14 @@ void setup() {
     pinMode(TFT_BL, OUTPUT);
     analogWrite(TFT_BL, TFT_BRIGHTNESS);
 
+
     // if analog input pin 0 is unconnected, random analog
     // noise will cause the call to randomSeed() to generate
     // different seed numbers each time the sketch runs.
     // randomSeed() will then shuffle the random function.
     // https://www.arduino.cc/reference/en/language/functions/random-numbers/random/
     randomSeed(analogRead(0));
+
 
     // initialize stars
     for (size_t i = 0; i < STAR_COUNT; i++) {
@@ -64,11 +71,16 @@ void setup() {
     tft.fillRect(0, 0, tft.width(), tft.height(), ILI9341_BLACK);
 }
 
+
 void loop() {
     unsigned long delta = millis() - lastMillis;
     lastMillis = millis();
 
+
     #if SHOW_FPS
+    if (millis() - lastFpsUpdate > FPS_UPDATE_INTERVAL) {
+        lastFpsUpdate = millis();
+
         fpsText.undraw(tft);
 
         #if SHOW_MINMAX_FPS
@@ -106,7 +118,9 @@ void loop() {
             minFpsText.draw(tft);
             maxFpsText.draw(tft);
         #endif
+    } // end fps interval if
     #endif
+
 
     for (size_t i = 0; i < STAR_COUNT; i++) {
         // undraw last step
