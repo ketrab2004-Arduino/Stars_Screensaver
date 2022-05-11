@@ -14,7 +14,7 @@
     * `DEBUG`: if you would like to compile debug `Serial.print`s
     * `TFT_CS`, `TFT_DC` & `TFT_BL`: if you use different ports for your lcd
     * `TFT_BRIGHTNESS`: 0-255 for the backlight strength
-    * `STAR_COUNT`: if you would like more or less stars (32 stars gives a nice 41-51fps on my Arduino MEGA 2560)
+    * `STAR_COUNT`: if you would like more or less stars (32 stars gives a nice 52-58fps on my Arduino MEGA 2560)
     * `STAR_MIN_SPEED` & `STAR_MAX_SPEED`: for changing the speed of the stars in pixels per second
     (stars at the center travel at MIN speed
     and stars near the edge of the screen will travel at MAX speed)
