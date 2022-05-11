@@ -20,7 +20,7 @@ Drawable *drawables[STAR_COUNT];
 
     unsigned long lastFpsUpdate = 0;
 
-    String fpsString = "--";
+    String fpsString = "--"; // 2 dashes, because fps is usually between 10 and 99, so that the char[] doesn't have to be resized
     Text fpsText(5, 5, fpsString.c_str());
 
     #if SHOW_MINMAX_FPS
@@ -101,36 +101,36 @@ void loop() {
     if (millis() - lastFpsUpdate > FPS_UPDATE_INTERVAL) {
         lastFpsUpdate = millis();
 
-        fpsText.undraw(tft);
+        (void)fpsText.undraw(tft);
 
         #if SHOW_MINMAX_FPS
-            minFpsText.undraw(tft);
-            maxFpsText.undraw(tft);
+            (void)minFpsText.undraw(tft);
+            (void)maxFpsText.undraw(tft);
 
             // set text here, because if text is set before undrawing, it will overlap the previous text
             if (maxFpsChanged) {
                 maxFpsString = String(maxFps);
-                maxFpsText.setText(maxFpsString.c_str());
+                (void)maxFpsText.setText(maxFpsString.c_str());
                 maxFpsChanged = false;
 
             } else if (minFpsChanged) { // else if, so min and max cannot be changed on the same frame
                 minFpsString = String(minFps);
-                minFpsText.setText(minFpsString.c_str());
+                (void)minFpsText.setText(minFpsString.c_str());
                 minFpsChanged = false;
             }
         #endif
 
         fpsString = String(fps);
-        fpsText.setText(fpsString.c_str());
+        (void)fpsText.setText(fpsString.c_str());
 
         // Text's doStep method is empty
         // fpsText.doStep(delta, tftPtr);
 
-        fpsText.draw(tft);
+        (void)fpsText.draw(tft);
 
         #if SHOW_MINMAX_FPS
-            minFpsText.draw(tft);
-            maxFpsText.draw(tft);
+            (void)minFpsText.draw(tft);
+            (void)maxFpsText.draw(tft);
         #endif
     } // end fps interval if
     #endif
@@ -138,12 +138,12 @@ void loop() {
 
     for (size_t i = 0; i < STAR_COUNT; i++) {
         // undraw last step
-        drawables[i]->undraw(tft);
+        (void)drawables[i]->undraw(tft);
 
         // calculate next step
-        drawables[i]->doStep(delta, tft);
+        (void)drawables[i]->doStep(delta, tft);
 
         // draw next step
-        drawables[i]->draw(tft);
+        (void)drawables[i]->draw(tft);
     }
 }
