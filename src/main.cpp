@@ -26,6 +26,10 @@ Drawable *drawables[STAR_COUNT];
     #if SHOW_MINMAX_FPS
         #include <limits.h>
 
+        // used to keep track whether the min/max text should be changed
+        bool maxFpsChanged = false;
+        bool minFpsChanged = false;
+
         unsigned long maxFps = 0;
         unsigned long minFps = ULONG_MAX; // unsigned, so -1 is below the minimum, so it will be the maximum
 
@@ -78,6 +82,22 @@ void loop() {
 
 
     #if SHOW_FPS
+    unsigned long fps = 1000 / delta;
+
+    #if SHOW_MINMAX_FPS
+        // only check for larger or less fps if 2.5 seconds have passed since the beginning of the program
+        if (lastMillis > 2500) {
+            if (fps > maxFps) { // set max if fps is higher
+                maxFps = fps;
+                maxFpsChanged = true;
+            }
+            if (fps < minFps) { // set min if fps is lower
+                minFps = fps;
+                minFpsChanged = true;
+            }
+        }
+    #endif
+
     if (millis() - lastFpsUpdate > FPS_UPDATE_INTERVAL) {
         lastFpsUpdate = millis();
 
@@ -86,23 +106,17 @@ void loop() {
         #if SHOW_MINMAX_FPS
             minFpsText.undraw(tft);
             maxFpsText.undraw(tft);
-        #endif
 
-        unsigned long fps = 1000 / delta;
+            // set text here, because if text is set before undrawing, it will overlap the previous text
+            if (maxFpsChanged) {
+                maxFpsString = String(maxFps);
+                maxFpsText.setText(maxFpsString.c_str());
+                maxFpsChanged = false;
 
-        #if SHOW_MINMAX_FPS
-            // only check for larger or less fps if 1.5 seconds have passed since the beginning of the program
-            if (lastMillis > 1500) {
-                if (fps > maxFps) { // set max if fps is higher
-                    maxFps = fps;
-                    maxFpsString = String(fps);
-                    maxFpsText.setText(maxFpsString.c_str());
-                }
-                if (fps < minFps) { // set min if fps is lower
-                    minFps = fps;
-                    minFpsString = String(fps);
-                    minFpsText.setText(minFpsString.c_str());
-                }
+            } else if (minFpsChanged) { // else if, so min and max cannot be changed on the same frame
+                minFpsString = String(minFps);
+                minFpsText.setText(minFpsString.c_str());
+                minFpsChanged = false;
             }
         #endif
 
